@@ -1,0 +1,26 @@
+{
+  "name": "jandi-webhook",
+  "version": "1.0.0",
+  "description": "잔디 인컴훅을 활용한 로그시스템입니다.",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/codingbyTaekong/jandi-webhook.git"
+  },
+  "scripts": {
+    "build": "tsc --build",
+    "test": "jest"
+  },
+  "author": "codingbyTaekong",
+  "license": "ISC",
+  "dependencies": {
+    "axios": "^1.1.3"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.20.2",
+    "@babel/preset-env": "^7.20.2",
+    "@types/jest": "^29.2.3",
+    "jest": "^29.3.1"
+  }
+}
