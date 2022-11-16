@@ -1,5 +1,3 @@
-import axios from 'axios';
-
 interface JANDI_MESSAGE {
     body : string,
     connectInfo ?: MSG[]
@@ -18,13 +16,6 @@ interface MSG {
  */
 const JandiHook = async (url : string, data : JANDI_MESSAGE, type ?: "error"|"success"|"warning") => {
     try {
-        const API = axios.create({
-            baseURL : url,
-            headers : {
-                'Accept': 'application/vnd.tosslab.jandi-v2+json',
-                'Content-Type': 'application/json',
-            }
-        })
         let color = ""
         switch (type) {
             case "error":
@@ -37,13 +28,20 @@ const JandiHook = async (url : string, data : JANDI_MESSAGE, type ?: "error"|"su
             default:
                 break;
         }
-        await API.post(url, {
-            ...data,
-            connectColor : color,
+        const response = await fetch(url, {
+            headers : {
+                'Accept': 'application/vnd.tosslab.jandi-v2+json',
+                'Content-Type': 'application/json',
+            },
+            method : "POST",
+            body : JSON.stringify({
+                ...data,
+                connectColor : color,
+            })
         })
-        return true
+        return response.json()
     } catch (error) {
-        return false
+        console.log(error)
     }
 }
 export default JandiHook

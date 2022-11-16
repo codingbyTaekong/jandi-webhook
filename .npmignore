@@ -6,3 +6,5 @@ jest.config.js
 config.js
 envFile.ts
 setupTest.js
+coverage/
+.env
